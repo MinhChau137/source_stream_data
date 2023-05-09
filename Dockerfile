@@ -1,7 +1,10 @@
 FROM ubuntu:20.04
 
-RUN sudo apt update -y
-RUN sudo apt install python3.10
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository -y ppa:deadsnakes/ppa && \
+    apt-get update && \
+    apt install -y python3.10
 
 WORKDIR /home
 RUN mkdir source_stream
