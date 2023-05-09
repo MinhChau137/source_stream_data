@@ -14,5 +14,5 @@ RUN mkdir data
 COPY data/test.csv data
 COPY server_test.py .
 
-EXPOSE 3000
+EXPOSE 12345
 CMD ["python3","server_test.py"]
