@@ -1,7 +1,7 @@
 import socket
 from time import sleep
 
-host = 'localhost'
+host = socket.gethostbyname(socket.gethostname())
 port = 12345
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
