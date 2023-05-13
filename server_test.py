@@ -20,6 +20,7 @@ while True:
                 conn.send(out)
                 sleep(1)
             print('End Of Stream.')
+            sleep(1)
     except socket.error:
         print ('Error Occured.\n\nClient disconnected.\n')
 conn.close()
