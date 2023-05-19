@@ -15,4 +15,4 @@ COPY data/test.csv data
 COPY server_test.py .
 
 EXPOSE 12345
-CMD ["python3","server_test.py"]
+CMD ["python3","-u", "server_test.py"]

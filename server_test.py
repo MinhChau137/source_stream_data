@@ -1,6 +1,6 @@
 import socket
 import time
-import threading 
+import threading
 
 host = socket.gethostbyname(socket.gethostname())
 port = 12345
@@ -32,8 +32,7 @@ def stream(conn):
         print ('Error Occured.\n\nClient disconnected.\n')
         
 while True:
-    print('\nListening for a client')
-    print('At:',host, ':' , port)
+    print('\nListening for a client at', host, port)
     conn, addr = connect(s)
     print('\nConnected by', addr)
     # thread = threading.Thread(target=stream, args=(conn,))
