@@ -10,14 +10,11 @@ s.bind((host, port))
 s.listen(10)
 
 def connect(sc):
-    print("Waiting...")
     while True:
         try: 
             client, addr = sc.accept()
-            print('Connected by', addr)
             break
         except:
-            print("Listen to client...")
             time.sleep(0.5)
     return client, addr
 def stream(conn):
@@ -35,7 +32,8 @@ def stream(conn):
         print ('Error Occured.\n\nClient disconnected.\n')
         
 while True:
-    print('\nListening for a client at',host , port)
+    print('\nListening for a client')
+    print('At:',host, ':' , port)
     conn, addr = connect(s)
     print('\nConnected by', addr)
     # thread = threading.Thread(target=stream, args=(conn,))
