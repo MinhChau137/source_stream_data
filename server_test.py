@@ -30,7 +30,7 @@ def stream(conn):
                 conn.send(out)
                 time.sleep(1)
             print('End Of Stream.')
-            time.sleep(1)
+            # time.sleep(1)
     except socket.error:
         print ('Error Occured.\n\nClient disconnected.\n')
         
