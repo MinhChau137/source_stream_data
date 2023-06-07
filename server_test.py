@@ -1,6 +1,6 @@
 import socket
 import time
-import threading 
+import threading
 
 host = socket.gethostbyname(socket.gethostname())
 port = 12345
@@ -10,14 +10,11 @@ s.bind((host, port))
 s.listen(10)
 
 def connect(sc):
-    print("Waiting...")
     while True:
         try: 
             client, addr = sc.accept()
-            print('Connected by', addr)
             break
         except:
-            print("Listen to client...")
             time.sleep(0.5)
     return client, addr
 def stream(conn, time_sleep):
@@ -30,11 +27,12 @@ def stream(conn, time_sleep):
                 conn.send(out)
                 time.sleep(time_sleep)
             print('End Of Stream.')
+            # time.sleep(1)
     except socket.error:
         print ('Error Occured.\n\nClient disconnected.\n')
         
 while True:
-    print('\nListening for a client at',host , port)
+    print('\nListening for a client at', host, port)
     conn, addr = connect(s)
     print('\nConnected by', addr)
     time_sleep = int(conn.recv(1024).decode())
