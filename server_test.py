@@ -20,7 +20,7 @@ def connect(sc):
             print("Listen to client...")
             time.sleep(0.5)
     return client, addr
-def stream(conn):
+def stream(conn, time_sleep):
     try:
         print('\nReading file...\n')
         with open('./data/test.csv') as f:
@@ -28,7 +28,7 @@ def stream(conn):
                 out = line.encode()
                 print('Sending line',line)
                 conn.send(out)
-                time.sleep(1)
+                time.sleep(time_sleep)
             print('End Of Stream.')
     except socket.error:
         print ('Error Occured.\n\nClient disconnected.\n')
@@ -37,8 +37,9 @@ while True:
     print('\nListening for a client at',host , port)
     conn, addr = connect(s)
     print('\nConnected by', addr)
+    time_sleep = int(conn.recv(1024).decode())
     # thread = threading.Thread(target=stream, args=(conn,))
     # thread.start()
-    stream(conn)
+    stream(conn, time_sleep)
 
 conn.close()
