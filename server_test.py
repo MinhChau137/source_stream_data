@@ -20,13 +20,16 @@ def connect(sc):
 def stream(conn, time_sleep):
     try:
         print('\nReading file...\n')
+        count = 0
         with open('./data/test.csv') as f:
             for line in f:
                 out = line.encode()
                 print('Sending line',line)
                 conn.send(out)
                 time.sleep(time_sleep+0.5)
+                count += 1
             print('End Of Stream.')
+            print("Number of line sent:",count)
             # time.sleep(1)
     except socket.error:
         print ('Error Occured.\n\nClient disconnected.\n')
