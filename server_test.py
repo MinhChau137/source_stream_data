@@ -25,7 +25,7 @@ def stream(conn, time_sleep):
                 out = line.encode()
                 print('Sending line',line)
                 conn.send(out)
-                time.sleep(time_sleep)
+                time.sleep(time_sleep+0.5)
             print('End Of Stream.')
             # time.sleep(1)
     except socket.error:
@@ -36,8 +36,8 @@ while True:
     conn, addr = connect(s)
     print('\nConnected by', addr)
     time_sleep = int(conn.recv(1024).decode())
-    # thread = threading.Thread(target=stream, args=(conn,))
-    # thread.start()
-    stream(conn, time_sleep)
+    thread = threading.Thread(target=stream, args=(conn,time_sleep))
+    thread.start()
+    # stream(conn, time_sleep)
 
 conn.close()
